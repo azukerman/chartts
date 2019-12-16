@@ -1,0 +1,47 @@
+{
+  "_from": "@syncfusion/ej2-data@~17.3.27",
+  "_id": "@syncfusion/ej2-data@17.3.27",
+  "_inBundle": false,
+  "_integrity": "sha512-Hz6SZfv0kMG4YhVGQjfeddMKpcq7LxNBXt6EnwZNcSqKU5+cNvCnnKZZ+u3m4OtxyhSAKri0ArhNhdRP8FAUXw==",
+  "_location": "/@syncfusion/ej2-data",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "@syncfusion/ej2-data@~17.3.27",
+    "name": "@syncfusion/ej2-data",
+    "escapedName": "@syncfusion%2fej2-data",
+    "scope": "@syncfusion",
+    "rawSpec": "~17.3.27",
+    "saveSpec": null,
+    "fetchSpec": "~17.3.27"
+  },
+  "_requiredBy": [
+    "/@syncfusion/ej2-dropdowns",
+    "/@syncfusion/ej2-lists",
+    "/@syncfusion/ej2-navigations",
+    "/@syncfusion/ej2-schedule"
+  ],
+  "_resolved": "https://registry.npmjs.org/@syncfusion/ej2-data/-/ej2-data-17.3.27.tgz",
+  "_shasum": "17c01c9b499692aff7a5f01712c2afbd2e0d386c",
+  "_spec": "@syncfusion/ej2-data@~17.3.27",
+  "_where": "C:\\my-app\\node_modules\\@syncfusion\\ej2-schedule",
+  "author": {
+    "name": "Syncfusion Inc."
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@syncfusion/ej2-base": "~17.3.27"
+  },
+  "deprecated": false,
+  "description": "Essential JS 2 DataManager",
+  "devDependencies": {},
+  "es2015": "./dist/es6/ej2-data.es2015.js",
+  "license": "SEE LICENSE IN license",
+  "main": "./dist/ej2-data.umd.min.js",
+  "module": "./index.js",
+  "name": "@syncfusion/ej2-data",
+  "sideEffects": false,
+  "typings": "index.d.ts",
+  "version": "17.3.27"
+}

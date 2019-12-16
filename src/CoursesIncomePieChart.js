@@ -18,7 +18,7 @@ class CoursesIncomePieChart extends React.Component {
     
   }
    
-  updateSelectedMonth=(selectedMonth) =>
+  updateSelectedMonthCallback=(selectedMonth) =>
   {
       this.selectedMonth = selectedMonth;
       this.fetchPieChartState();
@@ -48,7 +48,7 @@ class CoursesIncomePieChart extends React.Component {
     return (
 
       <div id="chart">
-       <CoursesIncomeLineChart toolTipFunction ={this.updateSelectedMonth}/>
+       <CoursesIncomeLineChart toolTipFunction ={this.updateSelectedMonthCallback}/>
         <ReactApexChart options={this.state.options} series={this.state.series} type="pie" width="600" />
 
       </div>

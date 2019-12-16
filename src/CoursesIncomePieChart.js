@@ -1,57 +1,60 @@
-
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 import CoursesIncomeLineChart from './CoursesIncomeLineChart';
 import ServerRequests from "./ServerRequests";
 
-    class CoursesIncomePieChart extends React.Component {
+class CoursesIncomePieChart extends React.Component {
       
-      constructor(props) {
-        super(props);
-       
-        this.selectedMonth = "Feb"
-       
-     
-        
-        this.state = {
-          
-        }
-        
-      }
-       
-      updateSelectedMonth=(selectedMonth) =>
-      {
-          this.selectedMonth = selectedMonth;
-          
-         
-      }
-
-      updateState =()=>
-      {
-        let newState = ServerRequests.getPieChartState(this.selectedMonth);
-        this.setState(newState);
-       
-        console.log(newState)
-      }
-      componentDidMount=()=>
-      {
-          
-          this.updateState();
+  constructor(props) {
+    super(props);
+   
+    this.selectedMonth = "Feb"
+   
+ 
     
-      }
-      render() {
-        
-
-        return (
-
-          <div id="chart">
-           <CoursesIncomeLineChart toolTipFunction ={this.updateSelectedMonth}/>
-            <ReactApexChart options={this.state.options} series={this.state.series} type="pie" width="600" />
-
-          </div>
-  
-
-        );
-      }
+    this.state = {
+      initCompleted: false
     }
-    export default CoursesIncomePieChart;
+    
+  }
+   
+  updateSelectedMonth=(selectedMonth) =>
+  {
+      this.selectedMonth = selectedMonth;
+      this.fetchPieChartState();
+      
+     
+  }
+
+  fetchPieChartState =()=>
+  {
+    let newState = ServerRequests.getPieChartState(this.selectedMonth);
+    this.setState({...newState, initCompleted: true});
+   
+    console.log(newState)
+  }
+  componentDidMount=()=>
+  {
+      
+      this.fetchPieChartState();
+
+  }
+  render() {
+    const {initCompleted} = this.state;
+    if(!initCompleted){
+    return <span>Fetching....</span>
+}
+
+    return (
+
+      <div id="chart">
+       <CoursesIncomeLineChart toolTipFunction ={this.updateSelectedMonth}/>
+        <ReactApexChart options={this.state.options} series={this.state.series} type="pie" width="600" />
+
+      </div>
+
+
+    );
+  }
+}
+export default CoursesIncomePieChart;

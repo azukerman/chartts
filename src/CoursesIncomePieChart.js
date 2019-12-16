@@ -3,6 +3,7 @@
     import ReactApexChart from "react-apexcharts";
     import CoursesIncomeLineChart from './CoursesIncomeLineChart';
 import ServerRequests from "./ServerRequests";
+import { throwStatement } from "@babel/types";
 
     class CoursesIncomePieChart extends React.Component {
       
@@ -12,7 +13,7 @@ import ServerRequests from "./ServerRequests";
         this.selectedMonth = "Feb"
        
      
-        this.updateState();
+        
         this.state = {
           
         }
@@ -22,24 +23,24 @@ import ServerRequests from "./ServerRequests";
       updateSelectedMonth=(selectedMonth) =>
       {
           this.selectedMonth = selectedMonth;
-          this.updateState();
+          
          
       }
 
       updateState =()=>
       {
         let newState = ServerRequests.getPieChartState(this.selectedMonth);
-
         this.setState(newState);
+        console.log(newState)
       }
-      componentWillMount=()=>
+      componentDidMount=()=>
       {
           
           this.updateState();
     
       }
       render() {
-        console.log(this.state)
+        
 
         return (
 

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
-class שCoursesIncomeLineChart extends React.Component {
+class CoursesIncomeLineChart extends React.Component {
       
     constructor(props) {
         super(props);

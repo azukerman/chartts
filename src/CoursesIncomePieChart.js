@@ -1,9 +1,8 @@
 
-    import React from "react";
-    import ReactApexChart from "react-apexcharts";
-    import CoursesIncomeLineChart from './CoursesIncomeLineChart';
+import React from "react";
+import ReactApexChart from "react-apexcharts";
+import CoursesIncomeLineChart from './CoursesIncomeLineChart';
 import ServerRequests from "./ServerRequests";
-import { throwStatement } from "@babel/types";
 
     class CoursesIncomePieChart extends React.Component {
       
@@ -31,6 +30,7 @@ import { throwStatement } from "@babel/types";
       {
         let newState = ServerRequests.getPieChartState(this.selectedMonth);
         this.setState(newState);
+       
         console.log(newState)
       }
       componentDidMount=()=>

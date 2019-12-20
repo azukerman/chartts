@@ -9,10 +9,10 @@ import GetCoursesIncomeCharts from './GetCoursesIncomeCharts';
 
 // import Resource from './Calendar';
 
-//  ReactDOM.render(<SupplyVsDemandPerCourseChart getPlotOptionsFunc ={getPlotOptionsFor2DChart} />, document.getElementById('root'));
+ ReactDOM.render(<SupplyVsDemandPerCourseChart getPlotOptionsFunc ={getPlotOptionsFor2DChart} />, document.getElementById('root'));
 // ReactDOM.render(<Resource />, document.getElementById('root'));
 //ReactDOM.render(< getCoursesIncomeCharts />, document.getElementById('root'));
-ReactDOM.render(<GetCoursesIncomeCharts />, document.getElementById('root'));
+//ReactDOM.render(<GetCoursesIncomeCharts />, document.getElementById('root'));
 
 
 // If you want your app to work offline and load faster, you can change

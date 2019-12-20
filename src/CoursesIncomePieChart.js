@@ -2,19 +2,14 @@ import React from "react";
 import ReactApexChart from "react-apexcharts";
 import CoursesIncomeLineChart from './CoursesIncomeLineChart';
 import ServerRequests from "./ServerRequests";
+import initCompleted from "./initCompleted";
 
-class CoursesIncomePieChart extends React.Component {
+class CoursesIncomePieChart extends initCompleted {
       
   constructor(props) {
     super(props);
    
     this.selectedMonth = "Feb"
-   
- 
-    
-    this.state = {
-      initCompleted: false
-    }
     
   }
    
@@ -28,8 +23,9 @@ class CoursesIncomePieChart extends React.Component {
 
   fetchPieChartState =()=>
   {
-    let newState = ServerRequests.getPieChartState(this.selectedMonth);
-    this.setState({...newState, initCompleted: true});
+    const newState = ServerRequests.getPieChartState(this.selectedMonth);
+
+    this.updateStateWithInitCompletedTrue(newState);
    
     console.log(newState)
   }
@@ -39,15 +35,18 @@ class CoursesIncomePieChart extends React.Component {
       this.fetchPieChartState();
 
   }
+
+
   render() {
-    const {initCompleted} = this.state;
-    if(!initCompleted){
-    return <span>Fetching....</span>
-}
+    
+    if(!this.wasInitialized()){
+      console.log("hi")
+      return this.renderToCompleteState()
+    }
 
     return (
 
-      <div id="chart">
+      <div id="coursesIncomePieChart">
        <CoursesIncomeLineChart toolTipFunction ={this.updateSelectedMonthCallback}/>
         <ReactApexChart options={this.state.options} series={this.state.series} type="pie" width="600" />
 

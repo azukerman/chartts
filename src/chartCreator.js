@@ -1,20 +1,32 @@
 import React from "react";
 import SupplyVsDemandChart from './SupplyVsDemandChart';
 import ServerRequests from './ServerRequests'
+import initCompleted from './initCompleted'
 
-class SupplyVsDemandPerCourseChart extends React.Component {
+class SupplyVsDemandPerCourseChart extends initCompleted {
 
     constructor(props) {
 
         super(props);
-        this.currentMonth = "January"
-        this.state =
+        this.currentMonth = "January";
+    }
+
+    fetchSupplyVsDemandPerCourseChart=()=>
+    {
+        const newState =
             {
                 supplyVsDemandPerMonth :ServerRequests.getCoursesSupplyVsDemandPerMonth(),
                 months: ServerRequests.getAllMonthInHebrewAndEnglish()
             }
-            
+     this.updateStateWithInitCompletedTrue(newState);
     }
+    componentDidMount=()=>
+    {
+        
+        this.fetchSupplyVsDemandPerCourseChart();
+    
+    }
+    
 
     getFilteredSupplyVsDemandByCurrrentMonth = () => this.state.supplyVsDemandPerMonth.filter((svd) => svd.month === this.currentMonth);
 
@@ -34,6 +46,10 @@ class SupplyVsDemandPerCourseChart extends React.Component {
     getSuppliesForSeries = () => { return { data: this.filterSupplies(), name: "Demand" }; }
     getSeries = () => [this.getSuppliesForSeries(), this.getDemandsForSeries()];
     render() {
+        if(!this.wasInitialized()){
+            console.log("hi")
+            return this.renderToCompleteState()
+          }
 
         return (
 
@@ -47,7 +63,7 @@ class SupplyVsDemandPerCourseChart extends React.Component {
     handleChange = (event) => {
 
         this.currentMonth = event.target.value;
-        this.forceUpdate()
+        this.fetchSupplyVsDemandPerCourseChart()
 
     }
     
